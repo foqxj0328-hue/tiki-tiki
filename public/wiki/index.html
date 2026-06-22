@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="tiki tiki 서버 포인트 시스템, 명령어, 포인트 상품 목록 위키.">
+  <meta name="theme-color" content="#070b13">
+  <title>서버 위키 — tiki tiki</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header is-scrolled">
+    <nav class="nav shell" aria-label="주요 메뉴">
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><span class="brand-word">tiki tiki</span></a>
+      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="/">홈</a>
+        <a href="/connect/">접속 방법</a>
+        <a href="/wiki/" aria-current="page">위키</a>
+        <a href="/support/">후원</a>
+      </div>
+      <a class="nav-cta" href="/connect/">서버 시작하기</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero shell">
+      <p class="eyebrow">Official wiki</p>
+      <h1>tiki tiki<br><span class="accent">위키</span></h1>
+      <p>포인트를 모으는 방법부터 명령어와 전체 상품 구성까지, 서버 플레이에 필요한 정보를 한곳에 정리했습니다.</p>
+    </section>
+
+    <section class="section-tight shell">
+      <div class="wiki-layout">
+        <aside class="wiki-nav" aria-label="위키 목차">
+          <p class="wiki-nav-title">Contents</p>
+          <a href="#points">포인트 시스템</a>
+          <a href="#earn">획득 방법</a>
+          <a href="#commands">명령어</a>
+          <a href="#shop">상품 리스트</a>
+          <a href="#support">서버 후원</a>
+        </aside>
+
+        <div class="wiki-content">
+          <section class="wiki-section" id="points">
+            <p class="section-kicker">Point system</p>
+            <h2>포인트 시스템</h2>
+            <p>포인트를 모아 모험과 육성에 도움이 되는 다양한 아이템 패키지로 교환할 수 있습니다.</p>
+            <div class="notice">포인트 상품과 가격은 서버 밸런스 및 운영 상황에 따라 추후 조정될 수 있습니다.</div>
+          </section>
+
+          <section class="wiki-section" id="earn">
+            <p class="section-kicker">How to earn</p>
+            <h2>포인트 획득 방법</h2>
+            <div class="earn-grid">
+              <article class="info-tile">
+                <strong>플레이 보상</strong>
+                <p>서버 접속 시간이 10분 지날 때마다 10포인트를 자동으로 획득합니다.</p>
+              </article>
+              <article class="info-tile">
+                <strong>서버 후원</strong>
+                <p>서버를 후원하면 1원당 2포인트를 지급받을 수 있습니다.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="wiki-section" id="commands">
+            <p class="section-kicker">Commands</p>
+            <h2>명령어</h2>
+            <div class="command-grid">
+              <article class="command"><code>/point</code><p>현재 보유 포인트를 확인합니다.</p></article>
+              <article class="command"><code>/shop</code><p>구매 가능한 상품 목록을 확인합니다.</p></article>
+              <article class="command"><code>/buy &lt;상품명&gt; &lt;수량&gt;</code><p>지정한 상품을 원하는 수량만큼 구매합니다.</p></article>
+            </div>
+          </section>
+
+          <section class="wiki-section" id="shop">
+            <p class="section-kicker">Point shop</p>
+            <h2>상품 리스트</h2>
+            <div class="shop-tools">
+              <input class="search" type="search" placeholder="상품명 또는 아이템 검색" aria-label="상품 검색" data-product-search>
+            </div>
+            <div class="shop-grid">
+              <article class="product" data-product>
+                <div class="product-top"><h3>welcome_package</h3><span class="price">60P</span></div>
+                <span class="free-badge">첫 구매 한정 무료!</span>
+                <ul><li>몬스터볼 ×16</li><li>다이아몬드 곡괭이(섬세한 손길) ×1</li><li>검은색 치료기 ×1</li><li>빵 ×64</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>starter_booster</h3><span class="price">60P</span></div>
+                <ul><li>마하 자전거 ×1</li><li>몬스터볼 ×10</li><li>퀵볼 ×5</li><li>튼튼밀크 ×10</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>starter_ball</h3><span class="price">60P</span></div>
+                <ul><li>몬스터볼 ×48</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>starter_ball_plus</h3><span class="price">120P</span></div>
+                <ul><li>퀵볼 ×32</li><li>하이퍼볼 ×12</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>exp_package</h3><span class="price">900P</span></div>
+                <ul><li>학습장치 ×1</li><li>경험사탕 S ×10</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>afk_exp_package</h3><span class="price">600P</span></div>
+                <ul><li>경험사탕 XS ×10</li><li>경험사탕 S ×10</li><li>경험사탕 M ×10</li><li>경험사탕 L ×1</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>master_exp_package</h3><span class="price">6000P</span></div>
+                <ul><li>마스터 학습장치 ×1</li><li>경험사탕 S ×10</li></ul>
+              </article>
+              <article class="product" data-product>
+                <div class="product-top"><h3>master_ball_package</h3><span class="price">2400P</span></div>
+                <ul><li>마스터볼 ×1</li></ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="wiki-section" id="support">
+            <p class="section-kicker">Support</p>
+            <h2>서버 후원하기</h2>
+            <p>후원금은 서버비 및 개발 비용으로 사용됩니다. 후원 시 1원당 2포인트를 지급합니다.</p>
+            <a class="button button-primary" href="/support/">후원 안내 보기</a>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner shell">
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><span class="brand-word">tiki tiki</span></a>
+      <p>마지막 문서 업데이트: 2026년 6월 22일</p>
+      <div class="footer-links"><a href="/connect/">접속</a><a href="/support/">후원</a></div>
+    </div>
+  </footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
+

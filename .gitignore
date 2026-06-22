@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+.wrangler-dry*/
+.config/
+.dev.vars
+*.log
+.DS_Store
+Thumbs.db
+deploy-assets/
+deploy-manifest.json
+.cloudflare-session.json

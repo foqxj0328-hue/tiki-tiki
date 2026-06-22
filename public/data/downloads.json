@@ -1,0 +1,106 @@
+[
+  {
+    "name": "NeoForge Installer",
+    "filename": "neoforge-21.1.233-installer.jar",
+    "objectKey": "neoforge-21.1.233-installer.jar",
+    "group": "loader",
+    "size": 6964847,
+    "sha256": "311475C8315ED0BE6B5F1DBBF5A377B6C0976457C0BD5AA6D19B0FE25FD77148"
+  },
+  {
+    "name": "Incendium",
+    "filename": "Incendium_1.21.x_v5.4.4.jar",
+    "objectKey": "mods/Incendium_1.21.x_v5.4.4.jar",
+    "group": "mod",
+    "size": 4267528,
+    "sha256": "285A4F69FE2391F2175F7FC9316D727A39C79BDD214923C59284D569BCE656F4"
+  },
+  {
+    "name": "JEI",
+    "filename": "jei-1.21.1-neoforge-19.25.0.322.jar",
+    "objectKey": "mods/jei-1.21.1-neoforge-19.25.0.322.jar",
+    "group": "mod",
+    "size": 1505377,
+    "sha256": "360D627C4C81F9EB42E0D1F316BAC66765596405790809CF64655BDEFC0B0307"
+  },
+  {
+    "name": "JourneyMap",
+    "filename": "journeymap-neoforge-1.21.1-6.0.0-beta.48.jar",
+    "objectKey": "mods/journeymap-neoforge-1.21.1-6.0.0-beta.48.jar",
+    "group": "mod",
+    "size": 3482455,
+    "sha256": "E9CC74571A48C11460D62F46E73A9B7105A58A91283609E41AC6EBADEB895B63"
+  },
+  {
+    "name": "Konkrete",
+    "filename": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+    "objectKey": "mods/konkrete_neoforge_1.9.9_MC_1.21.jar",
+    "group": "mod",
+    "size": 618842,
+    "sha256": "791C5538751DD3015EF3A2CE92D98719E1A28A48EBBD817B78506771256654CD"
+  },
+  {
+    "name": "KubeJS",
+    "filename": "kubejs-neoforge-2101.7.2-build.368.jar",
+    "objectKey": "mods/kubejs-neoforge-2101.7.2-build.368.jar",
+    "group": "mod",
+    "size": 2281720,
+    "sha256": "28867299E7A9F02CFD74E34745FDBBB073FE4887FDDBC98FD6C1ED2E87B01482"
+  },
+  {
+    "name": "Lithostitched",
+    "filename": "lithostitched-neoforge-1.21.1-1.4.8.jar",
+    "objectKey": "mods/lithostitched-neoforge-1.21.1-1.4.8.jar",
+    "group": "mod",
+    "size": 452131,
+    "sha256": "8B1D2CF5197AD37D20F90B415DB50B90B82314FD9B906089CC9306FE43E6CB79"
+  },
+  {
+    "name": "Pixelmon",
+    "filename": "Pixelmon-1.21.1-9.3.16-universal.jar",
+    "objectKey": "mods/Pixelmon-1.21.1-9.3.16-universal.jar",
+    "group": "mod",
+    "size": 394230428,
+    "sha256": "636676FA2FD04AB569F6885BA2DF006D2F4BDC82E0A6025EFB6BA97F2BDF44F6"
+  },
+  {
+    "name": "Rhino",
+    "filename": "rhino-2101.2.7-build.85.jar",
+    "objectKey": "mods/rhino-2101.2.7-build.85.jar",
+    "group": "mod",
+    "size": 882075,
+    "sha256": "E0E9B0E78EDD380440266C0F4EA8D489DAC851EF075A4566A66A6DAE2F7BBB66"
+  },
+  {
+    "name": "Structory",
+    "filename": "Structory_1.21.x_v1.3.10.jar",
+    "objectKey": "mods/Structory_1.21.x_v1.3.10.jar",
+    "group": "mod",
+    "size": 1260786,
+    "sha256": "50669B8AD823CB5FE5C29CA7ACB357B711E32068F29623E5A3E49B84CBFC0F47"
+  },
+  {
+    "name": "Structory Towers",
+    "filename": "Structory_Towers_1.21.x_v1.0.11.jar",
+    "objectKey": "mods/Structory_Towers_1.21.x_v1.0.11.jar",
+    "group": "mod",
+    "size": 486375,
+    "sha256": "B834131F2B77AAE72CFD78E6FD0D095CDA048F38681B5E812CD2768F336EAB32"
+  },
+  {
+    "name": "Tectonic",
+    "filename": "tectonic-3.0.1-neoforge-1.21.1.jar",
+    "objectKey": "mods/tectonic-3.0.1-neoforge-1.21.1.jar",
+    "group": "mod",
+    "size": 281066,
+    "sha256": "E28F41AF629212483D21ABC11077DBB068A495D1D531927C8A7A832F9D1048BE"
+  },
+  {
+    "name": "Terralith",
+    "filename": "Terralith_1.21.x_v2.5.8.jar",
+    "objectKey": "mods/Terralith_1.21.x_v2.5.8.jar",
+    "group": "mod",
+    "size": 3115385,
+    "sha256": "00333A130AC38B7B9CA93700098D5E02E0612BDC2D3522AADA2F36E5600621BF"
+  }
+]

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tiki-tiki.workers.dev/sitemap.xml
+

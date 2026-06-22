@@ -1,0 +1,16 @@
+{
+  "name": "tiki-tiki-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "tiki tiki Pixelmon server official website and wiki",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "prepare:deploy": "node scripts/prepare-deploy-assets.mjs",
+    "deploy:full": "npm run prepare:deploy && wrangler deploy --config wrangler.deploy.jsonc",
+    "check": "node scripts/check-site.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.103.0"
+  }
+}
