@@ -22,7 +22,7 @@
         <a href="/wiki/">위키</a>
         <a href="/support/">후원</a>
       </div>
-      <a class="nav-cta" href="#downloads">파일 다운로드</a>
+      <a class="nav-cta" href="#downloads">설치 링크 열기</a>
     </nav>
   </header>
 
@@ -39,14 +39,14 @@
           <span class="step-index">01</span>
           <div>
             <h2>NeoForge 설치</h2>
-            <p>아래 NeoForge Installer를 내려받아 실행하고, Minecraft 1.21.1 클라이언트 설치를 완료합니다.</p>
+            <p>아래 Google Drive 링크에서 NeoForge Installer를 내려받아 실행하고, Minecraft 1.21.1 클라이언트 설치를 완료합니다.</p>
           </div>
         </article>
         <article class="step">
           <span class="step-index">02</span>
           <div>
             <h2>필수 모드 배치</h2>
-            <p>나열된 모드 12개를 모두 내려받아 <code>%appdata%\.minecraft\mods</code> 폴더에 넣습니다.</p>
+            <p>필수 모드 Google Drive 폴더의 파일을 모두 내려받아 <code>%appdata%\.minecraft\mods</code> 폴더에 넣습니다.</p>
           </div>
         </article>
         <article class="step">
@@ -61,25 +61,32 @@
 
     <section class="section shell" id="downloads">
       <div class="notice">
-        안전한 설치를 위해 파일명과 버전을 임의로 변경하지 마세요. 각 파일에는 검증용 SHA-256 해시를 함께 표시했습니다.
+        Google Drive에서 파일을 내려받을 때 폴더 안의 파일명과 버전을 임의로 변경하지 마세요.
       </div>
 
-      <div class="download-toolbar">
-        <div>
-          <p class="section-kicker">Step 1</p>
-          <h2>NeoForge</h2>
-        </div>
-      </div>
-      <div class="download-list" data-download-list="loader" aria-live="polite"></div>
+      <div class="drive-download-grid">
+        <article class="drive-card">
+          <span class="drive-badge">STEP 1</span>
+          <div>
+            <h2>NeoForge Installer</h2>
+            <p>Minecraft 1.21.1용 NeoForge 설치 파일을 Google Drive에서 내려받습니다.</p>
+          </div>
+          <a class="button button-primary" href="https://drive.google.com/drive/folders/1J19c5I4ikToFGUW0DH2X_deVMVJEFA-I?usp=drive_link" target="_blank" rel="noopener noreferrer">
+            NeoForge 다운로드
+          </a>
+        </article>
 
-      <div class="download-toolbar">
-        <div>
-          <p class="section-kicker">Step 2</p>
-          <h2>필수 모드 12개</h2>
-        </div>
-        <span class="file-size">전체 약 393.7 MiB</span>
+        <article class="drive-card">
+          <span class="drive-badge">STEP 2</span>
+          <div>
+            <h2>필수 모드 파일</h2>
+            <p>Pixelmon을 포함한 서버 필수 모드 파일을 Google Drive에서 모두 내려받습니다.</p>
+          </div>
+          <a class="button button-primary" href="https://drive.google.com/drive/folders/1MhRBjc5RiS11IRCcFVsvyIm6S6cRQEDB?usp=drive_link" target="_blank" rel="noopener noreferrer">
+            모드 파일 다운로드
+          </a>
+        </article>
       </div>
-      <div class="download-list" data-download-list="mod" aria-live="polite"></div>
     </section>
 
     <section class="section shell">
@@ -104,4 +111,3 @@
   <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
-

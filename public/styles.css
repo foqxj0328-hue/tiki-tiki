@@ -379,6 +379,10 @@ h1 {
   gap: 18px;
 }
 
+.home-features {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .card {
   position: relative;
   overflow: hidden;
@@ -619,6 +623,55 @@ h1 {
 .download-list {
   display: grid;
   gap: 10px;
+}
+
+.drive-download-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 28px;
+  gap: 18px;
+}
+
+.drive-card {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 310px;
+  padding: 30px;
+  gap: 22px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(131, 243, 202, 0.12), transparent 16rem),
+    linear-gradient(145deg, rgba(24, 34, 53, 0.92), rgba(12, 18, 30, 0.96));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.drive-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+}
+
+.drive-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.drive-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.drive-badge {
+  display: inline-flex;
+  padding: 6px 10px;
+  color: var(--mint);
+  background: rgba(131, 243, 202, 0.08);
+  border: 1px solid rgba(131, 243, 202, 0.22);
+  border-radius: 9px;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
 }
 
 .download-item {
@@ -1058,6 +1111,10 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .drive-download-grid {
+    grid-template-columns: 1fr;
+  }
+
   .support-visual {
     min-height: 320px;
   }
@@ -1152,4 +1209,3 @@ h1 {
     animation-iteration-count: 1 !important;
   }
 }
-
