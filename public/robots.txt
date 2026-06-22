@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tiki-tiki.workers.dev/sitemap.xml
-
+Sitemap: https://tikitiki-6sh.pages.dev/sitemap.xml

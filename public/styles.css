@@ -992,6 +992,93 @@ h1 {
   font-weight: 950;
 }
 
+.patch-note {
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(24, 34, 53, 0.92), rgba(10, 16, 27, 0.98));
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.patch-note-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(28px, 6vw, 54px);
+  gap: 24px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255, 209, 102, 0.14), transparent 20rem),
+    rgba(255, 255, 255, 0.015);
+  border-bottom: 1px solid var(--line);
+}
+
+.patch-note-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.055em;
+}
+
+.version-badge {
+  flex: 0 0 auto;
+  padding: 9px 13px;
+  color: #17120f;
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 950;
+}
+
+.patch-groups {
+  display: grid;
+}
+
+.patch-group {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  padding: 30px clamp(28px, 6vw, 54px);
+  gap: 22px;
+}
+
+.patch-group + .patch-group {
+  border-top: 1px solid var(--line);
+}
+
+.patch-group h3 {
+  margin-bottom: 10px;
+  font-size: 1.22rem;
+}
+
+.patch-group ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.patch-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: #08130f;
+  border-radius: 15px;
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+
+.patch-icon-content {
+  background: var(--mint);
+}
+
+.patch-icon-balance {
+  color: #101622;
+  background: var(--blue);
+}
+
+.patch-icon-shop {
+  color: #211709;
+  background: var(--amber);
+}
+
 .footer {
   padding: 48px 0 34px;
   border-top: 1px solid var(--line);
@@ -1113,6 +1200,11 @@ h1 {
 
   .drive-download-grid {
     grid-template-columns: 1fr;
+  }
+
+  .patch-note-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .support-visual {

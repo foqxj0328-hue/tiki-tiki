@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="tiki tiki 서버 공지사항과 최신 패치노트를 확인하세요.">
+  <meta name="theme-color" content="#070b13">
+  <title>공지사항 — tiki tiki</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header is-scrolled">
+    <nav class="nav shell" aria-label="주요 메뉴">
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><span class="brand-word">tiki tiki</span></a>
+      <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="/">홈</a>
+        <a href="/connect/">접속 방법</a>
+        <a href="/wiki/">위키</a>
+        <a href="/notices/" aria-current="page">공지사항</a>
+        <a href="/support/">후원</a>
+      </div>
+      <a class="nav-cta" href="/connect/">서버 시작하기</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero shell">
+      <p class="eyebrow">News & updates</p>
+      <h1>서버<br><span class="accent">공지사항</span></h1>
+      <p>새로운 콘텐츠, 밸런스 변경 및 상품 소식을 가장 먼저 확인하세요.</p>
+    </section>
+
+    <section class="section-tight shell">
+      <article class="patch-note">
+        <header class="patch-note-head">
+          <div>
+            <p class="section-kicker">Latest update</p>
+            <h2>1.0.1 패치노트</h2>
+          </div>
+          <span class="version-badge">v1.0.1</span>
+        </header>
+
+        <div class="patch-groups">
+          <section class="patch-group">
+            <span class="patch-icon patch-icon-content" aria-hidden="true">+</span>
+            <div>
+              <h3>콘텐츠 추가</h3>
+              <ul><li>경험치의 탑 추가</li></ul>
+            </div>
+          </section>
+
+          <section class="patch-group">
+            <span class="patch-icon patch-icon-balance" aria-hidden="true">↕</span>
+            <div>
+              <h3>밸런스 패치</h3>
+              <ul><li>전설 스폰 주기 및 확률을 10분마다 65%로 변경하였습니다.</li></ul>
+            </div>
+          </section>
+
+          <section class="patch-group">
+            <span class="patch-icon patch-icon-shop" aria-hidden="true">₩</span>
+            <div>
+              <h3>신규 상품</h3>
+              <ul><li>포켓몬 이로치 도색 (1,000원)</li></ul>
+            </div>
+          </section>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner shell">
+      <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><span class="brand-word">tiki tiki</span></a>
+      <p>서버 업데이트와 운영 공지는 이 페이지에서 안내합니다.</p>
+      <div class="footer-links"><a href="/connect/">접속</a><a href="/wiki/">위키</a><a href="/support/">후원</a></div>
+    </div>
+  </footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
