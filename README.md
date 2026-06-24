@@ -7,8 +7,8 @@
 - 공식 랜딩 페이지
 - Google Drive 기반 NeoForge 및 필수 모드 다운로드 안내
 - 포인트 시스템·명령어·상품 전용 위키
-- 공지사항 및 버전별 패치노트
-- Cloudflare Workers 정적 자산 배포
+- 공지사항 목록 및 버전별 상세 패치노트
+- Cloudflare Pages 정적 사이트 배포
 
 ## 로컬 실행
 
