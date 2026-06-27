@@ -17,6 +17,16 @@
   --radius: 24px;
   --radius-sm: 16px;
   --content: min(1180px, calc(100vw - 40px));
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-fast: 180ms;
+  --motion-medium: 420ms;
+  --motion-slow: 760ms;
+  --scroll-depth: 0;
+  --scroll-hero-y: 0px;
+  --scroll-glow-x: 0px;
+  --scroll-glow-y: 0px;
+  --scroll-hero-scale: 1;
 }
 
 * {
@@ -53,6 +63,21 @@ body::before {
     linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 42px 42px;
   mask-image: linear-gradient(to bottom, black, transparent 75%);
+  animation: gridDrift 34s linear infinite;
+}
+
+body::after {
+  position: fixed;
+  inset: auto -12vw -32vh auto;
+  z-index: -1;
+  width: min(58vw, 760px);
+  height: min(58vw, 760px);
+  pointer-events: none;
+  content: "";
+  opacity: 0.18;
+  background: radial-gradient(circle, rgba(255, 122, 102, 0.32), transparent 66%);
+  filter: blur(10px);
+  transform: translate3d(var(--scroll-glow-x), var(--scroll-glow-y), 0);
 }
 
 a {
@@ -85,6 +110,7 @@ img {
   background: var(--mint);
   border-radius: 10px;
   transform: translateY(-150%);
+  transition: transform var(--motion-medium) var(--ease-out);
 }
 
 .skip-link:focus {
@@ -101,12 +127,13 @@ img {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid transparent;
-  transition: background 180ms ease, border-color 180ms ease, backdrop-filter 180ms ease;
+  transition: background var(--motion-fast) ease, border-color var(--motion-fast) ease, backdrop-filter var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .site-header.is-scrolled {
   background: rgba(7, 11, 19, 0.82);
   border-color: var(--line);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(18px);
 }
 
@@ -129,10 +156,16 @@ img {
 .brand img {
   width: 36px;
   height: 36px;
+  transition: transform var(--motion-medium) var(--ease-out), filter var(--motion-medium) ease;
 }
 
 .brand-word {
   font-size: 1.08rem;
+}
+
+.brand:hover img {
+  filter: drop-shadow(0 0 16px rgba(255, 209, 102, 0.28));
+  transform: rotate(-4deg) scale(1.08);
 }
 
 .nav-links {
@@ -143,18 +176,45 @@ img {
 }
 
 .nav-links a {
+  position: relative;
+  overflow: hidden;
   padding: 9px 13px;
   color: var(--muted);
   border-radius: 12px;
   font-size: 0.93rem;
   font-weight: 700;
-  transition: color 160ms ease, background 160ms ease;
+  transition: color var(--motion-fast) ease, background var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 13px;
+  bottom: 6px;
+  left: 13px;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, var(--coral), var(--amber));
+  border-radius: 999px;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: opacity var(--motion-fast) ease, transform var(--motion-medium) var(--ease-out);
 }
 
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-links a:hover {
+  transform: translateY(-1px);
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .nav-cta {
@@ -168,6 +228,14 @@ img {
   border-radius: 14px;
   font-size: 0.9rem;
   font-weight: 900;
+  box-shadow: 0 10px 28px rgba(255, 209, 102, 0.16);
+  transition: transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) ease, filter var(--motion-fast) ease;
+}
+
+.nav-cta:hover {
+  filter: saturate(1.08);
+  box-shadow: 0 16px 36px rgba(255, 209, 102, 0.24);
+  transform: translateY(-2px);
 }
 
 .nav-toggle {
@@ -197,6 +265,10 @@ img {
   background-position: center;
   background-size: cover;
   filter: saturate(0.95);
+  transform: translate3d(0, var(--scroll-hero-y), 0) scale(var(--scroll-hero-scale));
+  transform-origin: center;
+  animation: heroTone 16s ease-in-out infinite alternate;
+  will-change: transform, filter;
 }
 
 .hero-art::after {
@@ -217,6 +289,26 @@ img {
 
 .hero-copy {
   max-width: 650px;
+}
+
+.hero-copy > * {
+  animation: heroRise 900ms var(--ease-out) both;
+}
+
+.hero-copy > :nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.hero-copy > :nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.hero-copy > :nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.hero-copy > :nth-child(5) {
+  animation-delay: 360ms;
 }
 
 .eyebrow {
@@ -271,6 +363,8 @@ h1 {
 }
 
 .button {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -281,17 +375,48 @@ h1 {
   font-size: 0.94rem;
   font-weight: 900;
   cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) ease, background var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+.button::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(115deg, transparent 12%, rgba(255, 255, 255, 0.38), transparent 30%);
+  opacity: 0;
+  transform: translateX(-120%);
+  transition: transform 680ms var(--ease-out), opacity var(--motion-fast) ease;
 }
 
 .button:hover {
   transform: translateY(-2px);
 }
 
+.button:hover::after {
+  opacity: 1;
+  transform: translateX(125%);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.button:focus-visible,
+.nav-links a:focus-visible,
+.wiki-nav a:focus-visible,
+.notice-row:focus-visible {
+  outline: 3px solid rgba(131, 243, 202, 0.55);
+  outline-offset: 4px;
+}
+
 .button-primary {
   color: #17120f;
   background: linear-gradient(135deg, var(--coral), var(--amber));
   box-shadow: 0 14px 36px rgba(255, 122, 102, 0.2);
+}
+
+.button-primary:hover {
+  box-shadow: 0 20px 46px rgba(255, 122, 102, 0.28);
 }
 
 .button-secondary {
@@ -326,6 +451,13 @@ h1 {
   font-size: 0.82rem;
   font-weight: 800;
   backdrop-filter: blur(8px);
+  transition: transform var(--motion-fast) var(--ease-out), border-color var(--motion-fast) ease, background var(--motion-fast) ease;
+}
+
+.hero-facts li:hover {
+  background: rgba(24, 34, 53, 0.76);
+  border-color: rgba(131, 243, 202, 0.24);
+  transform: translateY(-2px);
 }
 
 .status-dot {
@@ -336,6 +468,7 @@ h1 {
   background: var(--mint);
   border-radius: 50%;
   box-shadow: 0 0 0 5px rgba(131, 243, 202, 0.12);
+  animation: statusPulse 2.4s ease-in-out infinite;
 }
 
 .section {
@@ -398,6 +531,28 @@ h1 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-medium) ease;
+  will-change: transform;
+}
+
+.card::before,
+.drive-card::before,
+.step::before,
+.info-tile::before,
+.command::before,
+.product::before,
+.support-card::before,
+.notice-board::before,
+.notice-article::before,
+.cta-panel::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.12), transparent 34%, rgba(131, 243, 202, 0.06));
+  opacity: 0;
+  transform: translateX(-18%);
+  transition: opacity var(--motion-medium) ease, transform var(--motion-slow) var(--ease-out);
 }
 
 .card::after {
@@ -408,6 +563,49 @@ h1 {
   height: 140px;
   content: "";
   background: radial-gradient(circle, rgba(255, 122, 102, 0.14), transparent 67%);
+  transition: transform var(--motion-slow) var(--ease-out), opacity var(--motion-medium) ease;
+}
+
+.card:hover::before,
+.drive-card:hover::before,
+.step:hover::before,
+.info-tile:hover::before,
+.command:hover::before,
+.product:hover::before,
+.support-card:hover::before,
+.notice-board:hover::before,
+.notice-article:hover::before,
+.cta-panel:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card:hover::after {
+  opacity: 1;
+  transform: translate3d(-16px, 12px, 0) scale(1.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover,
+  .drive-card:hover,
+  .step:hover,
+  .info-tile:hover,
+  .command:hover,
+  .product:hover,
+  .notice-row:hover {
+    border-color: rgba(255, 122, 102, 0.32);
+    box-shadow: 0 20px 52px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(255, 122, 102, 0.04) inset;
+    transform: translateY(-5px);
+  }
+
+  .support-card:hover,
+  .notice-board:hover,
+  .notice-article:hover,
+  .cta-panel:hover {
+    border-color: rgba(131, 243, 202, 0.22);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+    transform: translateY(-3px);
+  }
 }
 
 .card-number {
@@ -458,7 +656,7 @@ h1 {
   border: 15px solid rgba(255, 255, 255, 0.09);
   border-radius: 42%;
   box-shadow: 0 36px 90px rgba(255, 122, 102, 0.24);
-  transform: rotate(8deg);
+  animation: pointFloat 5.8s ease-in-out infinite;
 }
 
 .point-core span {
@@ -479,6 +677,7 @@ h1 {
   box-shadow: var(--shadow);
   font-size: 0.8rem;
   font-weight: 850;
+  animation: orbitFloat 6s ease-in-out infinite;
 }
 
 .orbit-label:nth-child(2) {
@@ -489,11 +688,13 @@ h1 {
 .orbit-label:nth-child(3) {
   top: 120px;
   right: 0;
+  animation-delay: 600ms;
 }
 
 .orbit-label:nth-child(4) {
   bottom: 54px;
   left: 42px;
+  animation-delay: 1200ms;
 }
 
 .list-check {
@@ -537,6 +738,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 32px;
   box-shadow: var(--shadow);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .cta-panel h2 {
@@ -576,13 +778,16 @@ h1 {
 }
 
 .step {
+  position: relative;
   display: grid;
   grid-template-columns: 74px 1fr;
+  overflow: hidden;
   padding: 28px;
   gap: 26px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-medium) ease;
 }
 
 .step-index {
@@ -640,9 +845,11 @@ h1 {
 }
 
 .drive-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  overflow: hidden;
   min-height: 310px;
   padding: 30px;
   gap: 22px;
@@ -651,6 +858,7 @@ h1 {
     linear-gradient(145deg, rgba(24, 34, 53, 0.92), rgba(12, 18, 30, 0.96));
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .drive-card h2 {
@@ -691,13 +899,14 @@ h1 {
   background: rgba(18, 26, 41, 0.68);
   border: 1px solid var(--line);
   border-radius: 18px;
-  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+  transition: border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out), background var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .download-item:hover {
   background: rgba(24, 34, 53, 0.86);
   border-color: rgba(255, 122, 102, 0.32);
-  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
 }
 
 .download-main {
@@ -739,6 +948,12 @@ h1 {
   color: #121822;
   background: var(--amber);
   border-radius: 13px;
+  transition: transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) ease;
+}
+
+.download-button:hover {
+  box-shadow: 0 10px 24px rgba(255, 209, 102, 0.22);
+  transform: translateY(-2px) scale(1.04);
 }
 
 .download-button img {
@@ -786,11 +1001,13 @@ h1 {
   border-radius: 10px;
   font-size: 0.88rem;
   font-weight: 750;
+  transition: color var(--motion-fast) ease, background var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
 }
 
 .wiki-nav a:hover {
   color: var(--text);
   background: rgba(255, 255, 255, 0.05);
+  transform: translateX(3px);
 }
 
 .wiki-content {
@@ -820,10 +1037,13 @@ h1 {
 }
 
 .info-tile {
+  position: relative;
+  overflow: hidden;
   padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .info-tile strong {
@@ -839,10 +1059,13 @@ h1 {
 }
 
 .command {
+  position: relative;
+  overflow: hidden;
   padding: 20px;
   background: #0d1421;
   border: 1px solid var(--line);
   border-radius: 18px;
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease;
 }
 
 .command-wide {
@@ -883,11 +1106,14 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 14px;
   outline: none;
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
 }
 
 .search:focus {
+  background: rgba(24, 34, 53, 0.92);
   border-color: var(--coral);
   box-shadow: 0 0 0 4px rgba(255, 122, 102, 0.1);
+  transform: translateY(-1px);
 }
 
 .shop-grid {
@@ -897,10 +1123,13 @@ h1 {
 }
 
 .product {
+  position: relative;
+  overflow: hidden;
   padding: 22px;
   background: linear-gradient(145deg, rgba(24, 34, 53, 0.88), rgba(12, 18, 30, 0.96));
   border: 1px solid var(--line);
   border-radius: 19px;
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .product[hidden] {
@@ -952,6 +1181,7 @@ h1 {
 }
 
 .support-card {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 0.85fr;
   overflow: hidden;
@@ -959,6 +1189,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 30px;
   box-shadow: var(--shadow);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .support-copy {
@@ -1043,15 +1274,18 @@ h1 {
   box-shadow: 0 30px 80px rgba(255, 209, 102, 0.22);
   font-size: 4.5rem;
   font-weight: 950;
+  animation: coinFloat 5.5s ease-in-out infinite;
 }
 
 .notice-board {
+  position: relative;
   overflow: hidden;
   padding: 24px;
   background: linear-gradient(145deg, rgba(24, 34, 53, 0.9), rgba(10, 16, 27, 0.97));
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: var(--shadow);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .notice-board-head {
@@ -1085,6 +1319,7 @@ h1 {
 }
 
 .notice-row {
+  position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -1094,7 +1329,7 @@ h1 {
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid transparent;
   border-radius: 16px;
-  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+  transition: border-color var(--motion-fast) ease, background var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) ease;
 }
 
 .notice-row:hover {
@@ -1113,6 +1348,7 @@ h1 {
 .notice-row-icon {
   font-size: 1.18rem;
   filter: drop-shadow(0 0 12px rgba(255, 122, 102, 0.34));
+  animation: fireFlicker 2.8s ease-in-out infinite;
 }
 
 .notice-row-title {
@@ -1139,6 +1375,8 @@ h1 {
 }
 
 .notice-article {
+  position: relative;
+  overflow: hidden;
   max-width: 920px;
   margin-inline: auto;
   padding: clamp(30px, 7vw, 72px);
@@ -1148,6 +1386,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 30px;
   box-shadow: var(--shadow);
+  transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .notice-back {
@@ -1263,6 +1502,14 @@ h1 {
 
 .notice-table tr:last-child td {
   border-bottom: 0;
+}
+
+.notice-table tbody tr {
+  transition: background var(--motion-fast) ease;
+}
+
+.notice-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .notice-detail-section {
@@ -1424,6 +1671,147 @@ h1 {
   transform: translateY(0);
 }
 
+.motion-ready .reveal-on-scroll {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate3d(0, 26px, 0) scale(0.985);
+  transition:
+    opacity var(--motion-slow) var(--ease-out),
+    filter var(--motion-slow) var(--ease-out),
+    transform var(--motion-slow) var(--ease-out),
+    border-color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease,
+    background var(--motion-fast) ease;
+  transition-delay: calc(var(--reveal-index, 0) * 55ms);
+}
+
+.motion-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-ready .reveal-on-scroll.is-visible.card:hover,
+  .motion-ready .reveal-on-scroll.is-visible.drive-card:hover,
+  .motion-ready .reveal-on-scroll.is-visible.step:hover,
+  .motion-ready .reveal-on-scroll.is-visible.info-tile:hover,
+  .motion-ready .reveal-on-scroll.is-visible.command:hover,
+  .motion-ready .reveal-on-scroll.is-visible.product:hover,
+  .motion-ready .reveal-on-scroll.is-visible.download-item:hover,
+  .motion-ready .reveal-on-scroll.is-visible.notice-row:hover {
+    transform: translateY(-5px);
+  }
+
+  .motion-ready .reveal-on-scroll.is-visible.support-card:hover,
+  .motion-ready .reveal-on-scroll.is-visible.notice-board:hover,
+  .motion-ready .reveal-on-scroll.is-visible.notice-article:hover,
+  .motion-ready .reveal-on-scroll.is-visible.cta-panel:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroTone {
+  from {
+    filter: saturate(0.92) brightness(0.98);
+  }
+
+  to {
+    filter: saturate(1.08) brightness(1.04);
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px rgba(131, 243, 202, 0.12);
+  }
+
+  50% {
+    box-shadow: 0 0 0 9px rgba(131, 243, 202, 0.04);
+  }
+}
+
+@keyframes pointFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(8deg);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(5deg);
+  }
+}
+
+@keyframes orbitFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes coinFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(2deg);
+  }
+}
+
+@keyframes fireFlicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.06) rotate(-3deg);
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 42px 42px, 42px 42px;
+  }
+}
+
+@keyframes menuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 900px) {
   .nav-toggle {
     display: inline-grid;
@@ -1449,6 +1837,7 @@ h1 {
 
   .nav-links.is-open {
     display: grid;
+    animation: menuDrop var(--motion-medium) var(--ease-out) both;
   }
 
   .nav-links a {
@@ -1608,6 +1997,10 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
@@ -1615,5 +2008,17 @@ h1 {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  body::after {
+    transform: none !important;
+  }
+
+  .motion-ready .reveal-on-scroll,
+  .motion-ready .reveal-on-scroll.is-visible {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition-delay: 0ms !important;
   }
 }
