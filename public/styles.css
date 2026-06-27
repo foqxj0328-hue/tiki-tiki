@@ -1202,6 +1202,17 @@ h1 {
   text-underline-offset: 4px;
 }
 
+.notice-prose code {
+  padding: 3px 6px;
+  color: var(--mint);
+  background: rgba(131, 243, 202, 0.08);
+  border: 1px solid rgba(131, 243, 202, 0.16);
+  border-radius: 7px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9em;
+  font-weight: 850;
+}
+
 .notice-detail-section {
   margin-top: 48px;
 }

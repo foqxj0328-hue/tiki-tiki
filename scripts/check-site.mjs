@@ -8,6 +8,7 @@ const required = [
   "public/connect/index.html",
   "public/wiki/index.html",
   "public/notices/index.html",
+  "public/notices/1.0.3/index.html",
   "public/notices/1.0.2/index.html",
   "public/notices/1.0.1/index.html",
   "public/support/index.html",
@@ -28,7 +29,7 @@ if (downloads.length !== 13) throw new Error(`Expected 13 downloads, found ${dow
 if (downloads.filter((item) => item.group === "mod").length !== 12) throw new Error("Expected 12 mods");
 if (!downloads.every((item) => /^[A-F0-9]{64}$/.test(item.sha256))) throw new Error("Invalid SHA-256 entry");
 
-for (const page of ["index", "connect/index", "wiki/index", "notices/index", "notices/1.0.2/index", "notices/1.0.1/index", "support/index"]) {
+for (const page of ["index", "connect/index", "wiki/index", "notices/index", "notices/1.0.3/index", "notices/1.0.2/index", "notices/1.0.1/index", "support/index"]) {
   const html = await readFile(join(root, `public/${page}.html`), "utf8");
   if (!html.includes('lang="ko"')) throw new Error(`${page} is missing Korean language metadata`);
   if (!html.includes('name="viewport"')) throw new Error(`${page} is missing viewport metadata`);
