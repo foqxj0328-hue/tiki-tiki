@@ -301,6 +301,13 @@ h1 {
   backdrop-filter: blur(10px);
 }
 
+.button-small {
+  min-height: 42px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+}
+
 .hero-facts {
   display: flex;
   flex-wrap: wrap;
@@ -838,6 +845,10 @@ h1 {
   border-radius: 18px;
 }
 
+.command-wide {
+  grid-column: 1 / -1;
+}
+
 .command code {
   display: block;
   margin-bottom: 8px;
@@ -851,6 +862,10 @@ h1 {
   margin: 0;
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+.command-actions {
+  margin-top: 16px;
 }
 
 .shop-tools {
@@ -1211,6 +1226,43 @@ h1 {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.9em;
   font-weight: 850;
+}
+
+.notice-table-wrap {
+  overflow-x: auto;
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.notice-table {
+  width: 100%;
+  min-width: 360px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.notice-table th,
+.notice-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.notice-table th {
+  color: var(--mint);
+  background: rgba(131, 243, 202, 0.06);
+  font-size: 0.85rem;
+  font-weight: 950;
+}
+
+.notice-table td {
+  color: #dbe2ed;
+  font-weight: 800;
+}
+
+.notice-table tr:last-child td {
+  border-bottom: 0;
 }
 
 .notice-detail-section {
