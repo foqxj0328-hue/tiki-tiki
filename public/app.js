@@ -2,37 +2,13 @@ const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const toast = document.querySelector(".toast");
-const root = document.documentElement;
-
-root.classList.add("motion-ready");
 
 function updateHeader() {
   header?.classList.toggle("is-scrolled", window.scrollY > 12);
 }
 
-let scrollTicking = false;
-function updateMotionVars() {
-  const depth = Math.min(window.scrollY / 900, 1);
-  root.style.setProperty("--scroll-depth", depth.toFixed(3));
-  root.style.setProperty("--scroll-hero-y", `${(-20 * depth).toFixed(2)}px`);
-  root.style.setProperty("--scroll-glow-x", `${(-34 * depth).toFixed(2)}px`);
-  root.style.setProperty("--scroll-glow-y", `${(-46 * depth).toFixed(2)}px`);
-  root.style.setProperty("--scroll-hero-scale", (1 + depth * 0.035).toFixed(4));
-}
-
-function handleScroll() {
-  updateHeader();
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
-    updateMotionVars();
-    scrollTicking = false;
-  });
-}
-
-window.addEventListener("scroll", handleScroll, { passive: true });
+window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
-updateMotionVars();
 
 navToggle?.addEventListener("click", () => {
   const open = navLinks.classList.toggle("is-open");
@@ -114,49 +90,4 @@ if (productSearch) {
       product.hidden = !product.textContent.toLowerCase().includes(query);
     });
   });
-}
-
-const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-const revealTargets = [...document.querySelectorAll([
-  ".page-hero",
-  ".section-head",
-  ".split",
-  ".card",
-  ".step",
-  ".drive-card",
-  ".download-item",
-  ".wiki-section",
-  ".info-tile",
-  ".command",
-  ".product",
-  ".support-card",
-  ".notice-board",
-  ".notice-row",
-  ".notice-article",
-  ".notice-detail-section",
-  ".cta-panel"
-].join(","))];
-
-if (revealTargets.length) {
-  revealTargets.forEach((element, index) => {
-    element.classList.add("reveal-on-scroll");
-    element.style.setProperty("--reveal-index", String(index % 8));
-  });
-
-  if (motionQuery.matches || !("IntersectionObserver" in window)) {
-    revealTargets.forEach((element) => element.classList.add("is-visible"));
-  } else {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    }, {
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.14
-    });
-
-    revealTargets.forEach((element) => revealObserver.observe(element));
-  }
 }
