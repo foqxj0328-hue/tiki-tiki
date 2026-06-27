@@ -2,13 +2,34 @@ const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const toast = document.querySelector(".toast");
+const root = document.documentElement;
 
 function updateHeader() {
   header?.classList.toggle("is-scrolled", window.scrollY > 12);
 }
 
-window.addEventListener("scroll", updateHeader, { passive: true });
+let scrollTicking = false;
+function updateSurfaceMotion() {
+  const depth = Math.min(window.scrollY / 900, 1);
+  root.style.setProperty("--hero-parallax-y", `${(-18 * depth).toFixed(2)}px`);
+  root.style.setProperty("--hero-parallax-scale", (1 + depth * 0.025).toFixed(4));
+  root.style.setProperty("--ambient-shift-x", `${(-26 * depth).toFixed(2)}px`);
+  root.style.setProperty("--ambient-shift-y", `${(-34 * depth).toFixed(2)}px`);
+}
+
+function handleScroll() {
+  updateHeader();
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    updateSurfaceMotion();
+    scrollTicking = false;
+  });
+}
+
+window.addEventListener("scroll", handleScroll, { passive: true });
 updateHeader();
+updateSurfaceMotion();
 
 navToggle?.addEventListener("click", () => {
   const open = navLinks.classList.toggle("is-open");
