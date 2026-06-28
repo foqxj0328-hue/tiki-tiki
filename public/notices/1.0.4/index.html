@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="tiki tiki 1.0.3 패치노트: 포인트 도박 추가, 메가 보스 밸런스 조정, 신규 상품 및 포켓볼 단품 가격 조정 안내.">
+  <meta name="description" content="tiki tiki 1.0.4 패치노트: SELL 명령어 추가, 로드맵 탭 추가, 포인트 상점 상품 가격 인하 안내.">
   <meta name="theme-color" content="#070b13">
-  <title>1.0.3 패치노트 — tiki tiki</title>
+  <title>1.0.4 패치노트 — tiki tiki</title>
   <link rel="icon" href="/assets/logo.svg">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3076228928346132"
      crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
         <a href="/roadmap/">로드맵</a>
         <a href="/support/">후원</a>
       </div>
-      <a class="nav-cta" href="/wiki/#shop">상품 보기</a>
+      <a class="nav-cta" href="/wiki/#commands">명령어 보기</a>
     </nav>
   </header>
 
@@ -37,7 +37,7 @@
         <img class="notice-article-logo" src="/assets/logo.svg" alt="" aria-hidden="true">
         <header class="notice-article-head">
           <p class="section-kicker">Patch note</p>
-          <h1>1.0.3 패치노트</h1>
+          <h1>1.0.4 패치노트</h1>
         </header>
 
         <dl class="notice-meta">
@@ -53,53 +53,64 @@
 
         <div class="notice-prose">
           <p>안녕하세요, tiki tiki 팀입니다.</p>
-          <p>이번 1.0.3 업데이트에서는 포인트 도박 콘텐츠 추가, 메가 보스 등장 밸런스 조정, 포인트 상점 상품 구성이 함께 반영되었습니다.</p>
+          <p>이번 1.0.4 업데이트에서는 아이템을 포인트로 전환할 수 있는 SELL 명령어와 로드맵 탭, 포인트 상점 가격 조정이 반영되었습니다.</p>
 
           <section class="notice-detail-section">
             <h2>✨ 콘텐츠 추가</h2>
             <ul>
-              <li>포인트 도박이 추가되었습니다.</li>
-              <li><code>/gambling bet &lt;베팅 금액&gt; &lt;배율&gt;</code> 명령어로 포인트 도박을 즐기실 수 있습니다.</li>
+              <li><code>/sell &lt;수량&gt;</code> 명령어가 추가되었습니다.</li>
+              <li>판매할 아이템을 손에 들고 명령어를 입력하면 일정 포인트가 지급됩니다.</li>
+              <li>판매 가능한 목록 및 판매 금액은 아래와 같습니다. 추후 업데이트를 통해 더 많은 물품을 판매 가능하도록 확장할 예정입니다.</li>
             </ul>
 
-            <div class="notice-table-wrap" aria-label="포인트 도박 배율별 확률">
+            <div class="notice-table-wrap" aria-label="SELL 명령어 판매 가능 목록">
               <table class="notice-table">
                 <thead>
                   <tr>
-                    <th>배율</th>
-                    <th>성공 확률</th>
+                    <th>판매 아이템</th>
+                    <th>지급 포인트</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>2배</td><td>49.0%</td></tr>
-                  <tr><td>3배</td><td>32.3%</td></tr>
-                  <tr><td>5배</td><td>19.0%</td></tr>
-                  <tr><td>10배</td><td>9.0%</td></tr>
-                  <tr><td>100배</td><td>0.6%</td></tr>
+                  <tr><td>마스터 학습장치</td><td>150P</td></tr>
+                  <tr><td>학습장치</td><td>70P</td></tr>
+                  <tr><td>금왕관</td><td>10P</td></tr>
                 </tbody>
               </table>
             </div>
           </section>
 
           <section class="notice-detail-section">
-            <h2>⚖️ 밸런스 패치</h2>
+            <h2>🗺️ 로드맵 추가</h2>
             <ul>
-              <li>메가 보스 확률을 기존 30%에서 50%로 변경하였습니다.</li>
-              <li>메가 보스 리스폰 주기를 기존 5분에서 3분 50초로 변경하였습니다.</li>
+              <li>홈 화면의 주요 버튼 영역과 우측 상단 메뉴에서 <a href="/roadmap/">로드맵 탭</a>에 입장할 수 있습니다.</li>
             </ul>
           </section>
 
           <section class="notice-detail-section">
-            <h2>🛒 상품 추가</h2>
-            <ul>
-              <li><code>gold_bottle_cap</code> 상품이 추가되었습니다. 가격은 100P이며, 금왕관을 지급합니다.</li>
-              <li><code>backpack_package</code> 상품이 추가되었습니다. 가격은 60P이며, 배낭을 지급합니다.</li>
-              <li><code>safety_goggles_package</code> 상품이 추가되었습니다. 가격은 120P이며, 방진 마스크를 지급합니다.</li>
-              <li><code>poke_ball_single</code> 가격이 3P에서 2P로 조정되었습니다.</li>
-              <li><code>great_ball_single</code> 가격이 5P에서 3P로 조정되었습니다.</li>
-              <li><code>quick_ball_single</code> 가격이 8P에서 4P로 조정되었습니다.</li>
-              <li><code>ultra_ball_single</code> 가격이 10P에서 5P로 조정되었습니다.</li>
-            </ul>
+            <h2>🛒 상품 가격 인하</h2>
+            <div class="notice-table-wrap" aria-label="상품 가격 인하 목록">
+              <table class="notice-table">
+                <thead>
+                  <tr>
+                    <th>상품명</th>
+                    <th>기존 가격</th>
+                    <th>변경 가격</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>welcome_package</code></td><td>60P</td><td>30P</td></tr>
+                  <tr><td><code>starter_booster</code></td><td>60P</td><td>30P</td></tr>
+                  <tr><td><code>starter_ball</code></td><td>60P</td><td>40P</td></tr>
+                  <tr><td><code>starter_ball_plus</code></td><td>120P</td><td>90P</td></tr>
+                  <tr><td><code>exp_package</code></td><td>900P</td><td>100P</td></tr>
+                  <tr><td><code>afk_exp_package</code></td><td>600P</td><td>200P</td></tr>
+                  <tr><td><code>master_exp_package</code></td><td>6000P</td><td>1500P</td></tr>
+                  <tr><td><code>poke_ball_single</code></td><td>2P</td><td>1P</td></tr>
+                  <tr><td><code>great_ball_single</code></td><td>3P</td><td>1P</td></tr>
+                </tbody>
+              </table>
+            </div>
           </section>
         </div>
       </article>
